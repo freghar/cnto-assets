@@ -71,6 +71,17 @@ class CfgPatches {
         textureVehicle = ""; \
     }
 
+#define MAP_MARKER(cname, text, paa) \
+    class cname { \
+        scope = 2; \
+        name = text; \
+        icon = paa; \
+        markerClass = MARKER_CATEGORY; \
+        color[] = {0,0,0,1}; \
+        shadow = 1; \
+        size = 32; \
+    }
+
 #define VEHCAMO(veh, base, name, text, paas) \
     class veh : base { \
         class TextureSources { \
@@ -503,4 +514,18 @@ class CfgUnitInsignia {
     INSIGNIA(WAFlagW, "Welsh Flag", TXR(WAFlagW.paa));
     INSIGNIA(ENFlagW, "English Flag", TXR(ENFlagW.paa));
     INSIGNIA(HRFlagW, "Croatian Flag", TXR(HRFlagW.paa));
+};
+
+class CfgMarkerClasses {
+    class cnto_nato_extra {
+        displayName = "CNTO NATO Extra";
+    };
+};
+class CfgMarkers {
+    /*
+     * NATO extra symbols
+     */
+    #define TXR(path) \cnto\assets\extra_nato_symbols\##path
+    #define MARKER_CATEGORY cnto_nato_extra
+    MAP_MARKER(cnto_dickbutt, "Dickbutt", TXR(dbutt.paa));
 };
